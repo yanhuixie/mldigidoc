@@ -70,7 +70,7 @@ class Func extends \yii\db\ActiveRecord
             'created_at' => Yii::t('common', 'Created At'),
             'created_by' => Yii::t('common', 'Created By'),
             'createdBy' => Yii::t('common', 'Created By'),
-            'mantraFuncs' => '关联文献语'
+            'mantraFuncs' => '关联文献'
         ];
     }
     

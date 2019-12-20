@@ -77,7 +77,7 @@ class Sutra extends \yii\db\ActiveRecord
             'pageno_begin' => '开始页码',
             'pageno_end' => '结束页码',
             'memo' => '备注',
-            'mantras' => '关联文献语'
+            'mantras' => '关联文献'
         ];
     }
     

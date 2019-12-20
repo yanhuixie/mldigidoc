@@ -58,7 +58,7 @@ class MantraFunc extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('common', 'ID'),
-            'mantra_id' => '文献语',
+            'mantra_id' => '文献',
             'func_id' => '标签',
             
         ];

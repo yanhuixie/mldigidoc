@@ -157,11 +157,11 @@ Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
                         'visible' => Yii::$app->user->can('administrator'),
                     ],
                     [
-                        'label' => '文献语',
+                        'label' => '文献',
                         'options' => ['class' => 'header'],
                     ],
                     [
-                        'label' => '文献语',
+                        'label' => '文献',
                         'url' => '#',
                         'icon' => '<i class="fa fa-files-o"></i>',
                         'options' => ['class' => 'treeview'],
@@ -174,7 +174,7 @@ Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
                                 'active' => Yii::$app->controller->id === 'mantra',
                             ],
                             [
-                                'label' => '出处(出处)',
+                                'label' => '出处',
                                 'url' => ['/sutra/index'],
                                 'icon' => '<i class="fa fa-folder-open-o"></i>',
                                 'active' => Yii::$app->controller->id === 'sutra',

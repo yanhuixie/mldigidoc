@@ -15,9 +15,9 @@ use trntv\filekit\behaviors\UploadBehavior;
  * @property string $entity_name_han 文献名汉文
  * @property string $entity_name_tb 文献名藏文
  * @property string $entity_name_sans 文献名梵文
- * @property string $text_han 文献语汉文
- * @property string $text_tb 文献语藏文
- * @property string $text_sans 文献语梵文
+ * @property string $text_han 文献汉文
+ * @property string $text_tb 文献藏文
+ * @property string $text_sans 文献梵文
  * @property int $sutra_id
  * @property string $context
  * @property string $cbeta_index
@@ -95,9 +95,9 @@ class Mantra extends \yii\db\ActiveRecord
             'entity_name_han' => '文献名汉文',
             'entity_name_tb' => '文献名藏文',
             'entity_name_sans' => '文献名梵文',
-            'text_han' => '文献语汉文',
-            'text_tb' => '文献语藏文',
-            'text_sans' => '文献语梵文',
+            'text_han' => '文献汉文',
+            'text_tb' => '文献藏文',
+            'text_sans' => '文献梵文',
             'context' => '前后文',
             'cbeta_index' => 'CBETA',
             'sutra_id' => '出处',
