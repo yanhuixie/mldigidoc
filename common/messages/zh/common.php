@@ -55,7 +55,7 @@ return [
     'Middlename' => '中间名',
     'Name' => '名称',
     'Order' => '顺序',
-    'Page View' => '页面浏览',
+    'Page View' => '页面视图',
     'Parent Category' => '父分类',
     'Path' => 'Path',
     'Picture' => '照片',
