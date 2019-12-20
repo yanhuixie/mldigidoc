@@ -1,5 +1,5 @@
-# mantraCMS
-关于文献的CMS
+# mldigidoc
+一个三语种的电子文献CMS
 
 ### vendor and env files
 链接: https://pan.baidu.com/s/1mw1_CS97hkyw2n5s-RZxmw 提取码: 4m52  
@@ -11,11 +11,11 @@
 ### Apache vhost configuration (Apache或Nginx自行选择)
 ```shell
 <VirtualHost *:80>
-    ServerName mantra.locl
+    ServerName mldigidoc.locl
 
     RewriteEngine on
     # the main rewrite rule for the frontend application
-    RewriteCond %{HTTP_HOST} ^mantra.locl$ [NC] 
+    RewriteCond %{HTTP_HOST} ^mldigidoc.locl$ [NC] 
     RewriteCond %{REQUEST_URI} !^/(backend/web|admin|storage/web)
     RewriteRule !^/frontend/web /frontend/web%{REQUEST_URI} [L]
     
@@ -31,14 +31,14 @@
     RewriteCond %{REQUEST_URI} ^/admin
     RewriteRule ^/admin(.*) /backend/web$1 [L]
 
-    DocumentRoot D:/develop/php/mantraCMS
+    DocumentRoot D:/develop/php/mldigidoc
     <Directory />
         Options FollowSymLinks
         AllowOverride None
         AddDefaultCharset utf-8
     </Directory>
     
-    <Directory "D:/develop/php/mantraCMS/frontend/web">
+    <Directory "D:/develop/php/mldigidoc/frontend/web">
         RewriteEngine on
         # if a directory or a file exists, use the request directly
         RewriteCond %{REQUEST_FILENAME} !-f
@@ -49,7 +49,7 @@
         Require all granted
     </Directory>
     
-    <Directory "D:/develop/php/mantraCMS/backend/web">
+    <Directory "D:/develop/php/mldigidoc/backend/web">
         RewriteEngine on
         # if a directory or a file exists, use the request directly
         RewriteCond %{REQUEST_FILENAME} !-f
@@ -60,7 +60,7 @@
         Require all granted
     </Directory>
     
-    <Directory "D:/develop/php/mantraCMS/storage/web">
+    <Directory "D:/develop/php/mldigidoc/storage/web">
         RewriteEngine on
         # if a directory or a file exists, use the request directly
         RewriteCond %{REQUEST_FILENAME} !-f
