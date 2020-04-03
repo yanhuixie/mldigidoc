@@ -34,9 +34,9 @@ return [
     ],
     [
 		'class'=>'\kartik\grid\DataColumn',
-		'attribute'=>'sutra_id',
+		'attribute'=>'sutra_name',
 		'value'=>function ($model){
-			return $model->sutra->entity_name_tc;
+			return $model->sutra_name;
 		}
 	],
 

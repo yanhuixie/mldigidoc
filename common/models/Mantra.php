@@ -34,6 +34,8 @@ class Mantra extends \yii\db\ActiveRecord
 {
     // use \mootensai\relation\RelationTrait;
 
+    public $sutra_name;
+
     public $funcs = [];
 
     /**
@@ -101,6 +103,7 @@ class Mantra extends \yii\db\ActiveRecord
             'context' => '前后文',
             'cbeta_index' => 'CBETA',
             'sutra_id' => '出处',
+            'sutra_name' => '出处',
             'created_at' => Yii::t('common', 'Created At'),
             'created_by' => Yii::t('common', 'Created By'),
             'createdBy' => '创建者',

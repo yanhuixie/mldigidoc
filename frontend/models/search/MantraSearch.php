@@ -43,7 +43,11 @@ class MantraSearch extends Mantra
      */
     public function search($params)
     {
-        $query = Mantra::find()->distinct()->joinWith('mantraFuncs');
+        $query = Mantra::find()
+            ->distinct()
+            ->joinWith('mantraFuncs')
+            ->joinWith('sutra')
+            ->select(['mantra.id', 'mantra.cd', 'mantra.entity_name_han', 'sutra.entity_name_tc sutra_name']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
