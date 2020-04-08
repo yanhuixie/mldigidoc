@@ -47,7 +47,7 @@ class MantraSearch extends Mantra
             ->distinct()
             ->joinWith('mantraFuncs')
             ->joinWith('sutra')
-            ->select(['mantra.id', 'mantra.cd', 'mantra.entity_name_han', 'sutra.entity_name_tc sutra_name']);
+            ->select(['mantra.id', 'mantra.cd', 'mantra.entity_name_han', 'mantra.entity_name_tb', 'mantra.entity_name_sans', 'sutra.entity_name_tc sutra_name']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
