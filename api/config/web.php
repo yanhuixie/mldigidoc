@@ -22,13 +22,20 @@ $config = [
         ],
         'request' => [
             'enableCookieValidation' => false,
+            // 'baseUrl' => '/napi',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+                'text/json' => 'yii\web\JsonParser',
+            ]
         ],
         'user' => [
             'class' => yii\web\User::class,
             'identityClass' => common\models\User::class,
-            'loginUrl' => ['/user/sign-in/login'],
-            'enableAutoLogin' => true,
-            'as afterLogin' => common\behaviors\LoginTimestampBehavior::class
+            'enableSession' => false,
+            'loginUrl' => null,
+            // 'loginUrl' => ['/user/sign-in/login'],
+            // 'enableAutoLogin' => true,
+            // 'as afterLogin' => common\behaviors\LoginTimestampBehavior::class
         ]
     ]
 ];

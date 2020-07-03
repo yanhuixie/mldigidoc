@@ -13,6 +13,7 @@ use yii\rest\DeleteAction;
 use yii\rest\Serializer;
 use yii\rest\ViewAction;
 use yii\web\HttpException;
+use yii\filters\auth\HttpBasicAuth;
 
 /**
  * @SWG\Swagger(
@@ -37,6 +38,16 @@ class ArticleController extends ActiveController
      * @var string
      */
     public $modelClass = 'api\modules\v1\resources\Article';
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => HttpBasicAuth::className(),
+            'only' => ['create']
+        ];
+        return $behaviors;
+    }
 
     /**
      * @SWG\Get(path="/v1/article/index",
@@ -85,7 +96,11 @@ class ArticleController extends ActiveController
             'options' => [
                 'class' => OptionsAction::class,
 
-            ]
+            ],
+            'create' => [
+                'class' => CreateAction::class,
+                'modelClass' => $this->modelClass,
+            ],
         ];
     }
 
