@@ -22,7 +22,7 @@ $config = [
         ],
         'request' => [
             'enableCookieValidation' => false,
-            'baseUrl' => '/napi', //注意多域名时不要这个配置；对于httpd，要rewrite规则配合
+            'baseUrl' => env('API_BASE_URL'), //注意多域名时不要这个配置；对于httpd，要rewrite规则配合
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
                 'text/json' => 'yii\web\JsonParser',
