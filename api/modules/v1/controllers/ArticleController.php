@@ -22,12 +22,12 @@ use yii\filters\auth\HttpBasicAuth;
  *     basePath="/",
  *     @SWG\Info(
  *         version="1.0.0",
- *         title="Yii2-Starter-Kit API Documentation",
+ *         title="Multi-language Digital Documentation API Reference",
  *         description="API description...",
  *         termsOfService="",
  *         @SWG\License(
  *             name="BSD License",
- *             url="https://raw.githubusercontent.com/yii2-starter-kit/yii2-starter-kit/master/LICENSE.md"
+ *             url="###"
  *         )
  *     ),
  * )
@@ -51,9 +51,37 @@ class ArticleController extends ActiveController
     }
 
     /**
-     * @SWG\Get(path="/v1/article/index",
-     *     tags={"article", "index"},
-     *     summary="Retrieves the collection of Articles.",
+     * @SWG\Get(path="/napi/v1/article/index",
+     *     tags={"Article"},
+     *     summary="查询文章集合。如需组合查询，可以使用 filter[parm1]=a&filter[parm2]=b 的方式",
+     *     @SWG\Parameter(
+     *          name="filter[id]",
+     *          type="integer",
+     *          required=false,
+     *          in="query",
+     *          description="文章ID"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="filter[title]",
+     *          type="string",
+     *          required=false,
+     *          in="query",
+     *          description="文章标题。如果要使用部分匹配，请将参数改为 filter[title][like] "
+     *     ),
+     *     @SWG\Parameter(
+     *          name="filter[slug]",
+     *          type="string",
+     *          required=false,
+     *          in="query",
+     *          description="文章slug。如果要使用部分匹配，请将参数改为 filter[slug][like] "
+     *     ),
+     *     @SWG\Parameter(
+     *          name="filter[category_id]",
+     *          type="integer",
+     *          required=false,
+     *          in="query",
+     *          description="文章分类ID"
+     *     ),
      *     @SWG\Response(
      *         response = 200,
      *         description = "Article collection response",
@@ -61,23 +89,79 @@ class ArticleController extends ActiveController
      *     ),
      * )
      *
-     * @SWG\Get(path="/v1/article/view",
+     * @SWG\Get(path="/napi/v1/article/view",
      *     tags={"Article"},
-     *     summary="Displays data of one article only",
+     *     summary="查询指定ID的文章",
+     *     @SWG\Parameter(
+     *          name="id",
+     *          type="integer",
+     *          required=false,
+     *          in="query",
+     *          description="文章ID"
+     *     ),
      *     @SWG\Response(
      *         response = 200,
-     *         description = "Used to fetch information of a specific article.",
+     *         description = "取回指定ID的 article 实例.",
      *         @SWG\Schema(ref = "#/definitions/Article")
      *     ),
      * )
-     *
-     * @SWG\Options(path="/v1/article/options",
+     * 
+     * @SWG\Post(path="/napi/v1/article/create",
      *     tags={"Article"},
-     *     summary="Displays the options for the article resource.",
+     *     summary="创建文章，注意JSON里不要包含ID",
+     *     @SWG\Parameter(
+     *          name="body",
+     *          type="string",
+     *          required=true,
+     *          in="body",
+     *          description="文章Model JSON",
+     *          @SWG\Schema(ref = "#/definitions/Article")
+     *     ),
      *     @SWG\Response(
      *         response = 200,
-     *         description = "Displays the options available for the Article resource",
+     *         description = "已创建的 article 实例.",
      *         @SWG\Schema(ref = "#/definitions/Article")
+     *     )
+     * )
+     * 
+     * @SWG\Put(path="/napi/v1/article/update",
+     *     tags={"Article"},
+     *     summary="修改指定ID的文章",
+     *     @SWG\Parameter(
+     *          name="id",
+     *          type="integer",
+     *          required=true,
+     *          in="query",
+     *          description="文章ID"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="body",
+     *          type="string",
+     *          required=true,
+     *          in="body",
+     *          description="文章Model JSON",
+     *          @SWG\Schema(ref = "#/definitions/Article")
+     *     ),
+     *     @SWG\Response(
+     *         response = 200,
+     *         description = "已修改的 article 实例.",
+     *         @SWG\Schema(ref = "#/definitions/Article")
+     *     )
+     * )
+     * 
+     * @SWG\Options(path="/napi/v1/article/options",
+     *     tags={"Article"},
+     *     summary="显示关于当前资源的所有可选的指令",
+     *     @SWG\Parameter(
+     *          name="id",
+     *          type="integer",
+     *          required=false,
+     *          in="query",
+     *          description="文章ID"
+     *     ),
+     *     @SWG\Response(
+     *         response = 200,
+     *         description = "关于当前资源的所有可选的指令。参考Response Header Allow",
      *     ),
      * )
      */
