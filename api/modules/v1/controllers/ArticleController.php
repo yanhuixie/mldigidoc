@@ -2,6 +2,7 @@
 
 namespace api\modules\v1\controllers;
 
+use frontend\models\search\ArticleSearch;
 use api\modules\v1\resources\Article;
 use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
@@ -44,7 +45,7 @@ class ArticleController extends ActiveController
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBasicAuth::className(),
-            'only' => ['create']
+            'only' => ['create', 'update']
         ];
         return $behaviors;
     }
@@ -86,7 +87,11 @@ class ArticleController extends ActiveController
             'index' => [
                 'class' => IndexAction::class,
                 'modelClass' => $this->modelClass,
-                'prepareDataProvider' => [$this, 'prepareDataProvider']
+                'prepareDataProvider' => [$this, 'prepareDataProvider'],
+                'dataFilter' => [
+                    'class' => 'yii\data\ActiveDataFilter',
+                    'searchModel' => ArticleSearch::class
+                ]
             ],
             'view' => [
                 'class' => ViewAction::class,
@@ -101,16 +106,31 @@ class ArticleController extends ActiveController
                 'class' => CreateAction::class,
                 'modelClass' => $this->modelClass,
             ],
+            'update' => [
+                'class' => UpdateAction::class,
+                'modelClass' => $this->modelClass,
+            ],
         ];
     }
 
     /**
      * @return ActiveDataProvider
+     * 
+     * http://mldigidoc.locl/napi/v1/article/index?filter[id]=1
+     * http://mldigidoc.locl/napi/v1/article/index?filter[category_id]=1
+     * http://mldigidoc.locl/napi/v1/article/index?filter[title]=aaaa
+     * http://mldigidoc.locl/napi/v1/article/index?filter[title][like]=a
+     * http://mldigidoc.locl/napi/v1/article/index?filter[slug]=aaaa
+     * http://mldigidoc.locl/napi/v1/article/index?filter[slug][like]=a
      */
-    public function prepareDataProvider()
+    public function prepareDataProvider($action, $filter)
     {
+        $query = Article::find()->with('category', 'articleAttachments')->published();
+        if($filter){
+            $query->andWhere($filter);
+        }
         return new ActiveDataProvider(array(
-            'query' => Article::find()->with('category', 'articleAttachments')->published()
+            'query' => $query
         ));
     }
 
