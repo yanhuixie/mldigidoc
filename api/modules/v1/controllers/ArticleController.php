@@ -19,11 +19,11 @@ use yii\filters\auth\HttpBasicAuth;
 /**
  * @SWG\Swagger(
  *     schemes={"http","https"},
- *     basePath="/",
+ *     basePath="/napi/v1/",
  *     @SWG\Info(
  *         version="1.0.0",
  *         title="Multi-language Digital Documentation API Reference",
- *         description="API description...",
+ *         description="文献系统的 Article（文章）API 说明文档。仅供学习研究使用。",
  *         termsOfService="",
  *         @SWG\License(
  *             name="BSD License",
@@ -51,7 +51,7 @@ class ArticleController extends ActiveController
     }
 
     /**
-     * @SWG\Get(path="/napi/v1/article/index",
+     * @SWG\Get(path="/article/index",
      *     tags={"Article"},
      *     summary="查询文章集合。如需组合查询，可以使用 filter[parm1]=a&filter[parm2]=b 的方式",
      *     @SWG\Parameter(
@@ -89,7 +89,7 @@ class ArticleController extends ActiveController
      *     ),
      * )
      *
-     * @SWG\Get(path="/napi/v1/article/view",
+     * @SWG\Get(path="/article/view",
      *     tags={"Article"},
      *     summary="查询指定ID的文章",
      *     @SWG\Parameter(
@@ -106,7 +106,7 @@ class ArticleController extends ActiveController
      *     ),
      * )
      * 
-     * @SWG\Post(path="/napi/v1/article/create",
+     * @SWG\Post(path="/article/create",
      *     tags={"Article"},
      *     summary="创建文章，注意JSON里不要包含ID",
      *     @SWG\Parameter(
@@ -124,7 +124,7 @@ class ArticleController extends ActiveController
      *     )
      * )
      * 
-     * @SWG\Put(path="/napi/v1/article/update",
+     * @SWG\Put(path="/article/update",
      *     tags={"Article"},
      *     summary="修改指定ID的文章",
      *     @SWG\Parameter(
@@ -149,7 +149,7 @@ class ArticleController extends ActiveController
      *     )
      * )
      * 
-     * @SWG\Options(path="/napi/v1/article/options",
+     * @SWG\Options(path="/article/options",
      *     tags={"Article"},
      *     summary="显示关于当前资源的所有可选的指令",
      *     @SWG\Parameter(
