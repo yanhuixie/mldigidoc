@@ -74,7 +74,7 @@ class MantraSearch extends Mantra
             ]);
         }
 
-        $query->andFilterWhere(['like', 'cd', $this->cd])
+        $query->andFilterWhere(['like', 'mantra.cd', $this->cd])
             ->andFilterWhere(['like', 'entity_name_han', $this->entity_name_han])
             ->andFilterWhere(['like', 'entity_name_tb', $this->entity_name_tb])
             ->andFilterWhere(['like', 'entity_name_sans', $this->entity_name_sans])
